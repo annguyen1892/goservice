@@ -26,8 +26,8 @@ func (m *Handler) Connect() {
 	db = session.DB(m.Database)
 }
 
-func (m *Handler) FindAll() ([]Products, error) {
-	// var products []Products
-	// err := db.C(COLLECTION).Find(b.son.M{}).All(&products)
-	// return products, err
+func (m *Handler) FindAll() ([]Product, error) {
+	var products []Product
+	err := db.C(COLLECTION).Find(bson.M{}).All(&products)
+	return products, err
 }
