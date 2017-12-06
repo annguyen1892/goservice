@@ -1,14 +1,19 @@
 package config
 
 import (
-	"log"
 	"github.com/BurntSushi/toml"
+	"log"
+	"time"
 )
 
-// Represents database server and credentials
+// Config represents database server and credentials
 type Config struct {
-	Server   string
-	Database string
+	Host           string
+	Timeout        time.Duration
+	Database       string
+	Username       string
+	Password       string
+	Replicasetname string
 }
 
 // Read and parse the configuration file

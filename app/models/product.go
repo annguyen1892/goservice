@@ -1,17 +1,26 @@
 package models
 
-import (
-	"gopkg.in/mgo.v2/bson"
-	"time"
-)
-
 // Product Represent a product
 // the properties in mongodb document
 type Product struct {
-	ID        bson.ObjectId `json:"_id,omitempty" bson:"_id,omitempty"`
-	ProductID int32         `bson:"product_id"`
-	UserID    int32         `bson:"user_id"`
-	CreatedAt string        `bson:"created_at"`
-	Microtime float64       `bson:"microtime"`
-	UpdatedAt time.Time     `bson:"updated_at"`
+	ProductID int32  `bson:"product_id" json:"product_id"`
+	UserID    int32  `bson:"user_id"    json:"user_id"`
+	CreatedAt string `bson:"created_at" json:"created_at"`
+	Microtime int64  `bson:"microtime"  json:"microtime"`
+}
+
+type Paging struct {
+	Total       int `bson:"total" json:"total"`
+	PerPage     int `bson:"per_page" json:"per_page"`
+	CurrentPage int `bson:"current_page" json:"current_page"`
+	LastPage    int `bson:"last_page" json:"last_page"`
+}
+
+type Response struct {
+	Paging Paging    `bson:"paging" json:"paging"`
+	Data   []Product `bson:"data" json:"data"`
+}
+
+type Create struct {
+	Result string `bson:"result" json:"result"`
 }
